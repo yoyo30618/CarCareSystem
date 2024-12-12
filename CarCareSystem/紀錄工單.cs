@@ -186,11 +186,13 @@ namespace CarCareSystem
 
             // 預設保持一列空白
             DGV_工作單零件.AllowUserToAddRows = true;
+
             // 零件選擇 (下拉式選單)
             DataGridViewComboBoxColumn partSelectionColumn = new DataGridViewComboBoxColumn();
             partSelectionColumn.HeaderText = "零件選擇";
             partSelectionColumn.Name = "PartSelection";
             partSelectionColumn.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
+            partSelectionColumn.Width = 200; // 設定寬度
             LoadPartsIntoComboBox(partSelectionColumn);
 
             // 零件分類 (下拉式選單)
@@ -198,26 +200,61 @@ namespace CarCareSystem
             partCategoryColumn.HeaderText = "零件分類";
             partCategoryColumn.Name = "PartCategory";
             partCategoryColumn.Items.AddRange("耗材", "零件");
+            partCategoryColumn.Width = 80; // 設定寬度
 
             // 其他欄位
+            var partNameColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "零件名稱",
+                Name = "PartName",
+                Width = 200 // 設定寬度
+            };
+            var unitPriceColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "零件單價",
+                Name = "UnitPrice",
+                Width = 60 // 設定寬度
+            };
+            var quantityColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "數量",
+                Name = "Quantity",
+                Width = 60 // 設定寬度
+            };
+            var totalPriceColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "總價",
+                Name = "TotalPrice",
+                ReadOnly = true, // 設置為只讀
+                Width = 60 // 設定寬度
+            };
+            var remarksColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "備註",
+                Name = "Remarks",
+                Width = 100 // 設定寬度
+            };
+
+            // 刪除按鈕欄位
+            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
+            {
+                HeaderText = "刪除",
+                Text = "刪除",
+                UseColumnTextForButtonValue = true,
+                Width = 60 // 設定寬度
+            };
+
+            // 將欄位加入 DataGridView
             DGV_工作單零件.Columns.Add(partSelectionColumn);
             DGV_工作單零件.Columns.Add(partCategoryColumn);
-            DGV_工作單零件.Columns.Add("PartName", "零件名稱");
-            DGV_工作單零件.Columns.Add("UnitPrice", "零件單價");
-            DGV_工作單零件.Columns.Add("Quantity", "數量");
-            DGV_工作單零件.Columns.Add("TotalPrice", "總價");
-            DGV_工作單零件.Columns.Add("Remarks", "備註");
-
-            // 設置總價欄位為只讀
-            DGV_工作單零件.Columns["TotalPrice"].ReadOnly = true;
-            // 刪除按鈕欄位
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn();
-            deleteColumn.HeaderText = "刪除";
-            deleteColumn.Text = "刪除";
-            deleteColumn.UseColumnTextForButtonValue = true;
+            DGV_工作單零件.Columns.Add(partNameColumn);
+            DGV_工作單零件.Columns.Add(unitPriceColumn);
+            DGV_工作單零件.Columns.Add(quantityColumn);
+            DGV_工作單零件.Columns.Add(totalPriceColumn);
+            DGV_工作單零件.Columns.Add(remarksColumn);
             DGV_工作單零件.Columns.Add(deleteColumn);
-
         }
+
 
         private void LoadPartsIntoComboBox(DataGridViewComboBoxColumn column)
         {
@@ -673,7 +710,7 @@ namespace CarCareSystem
                                     decimal unitPrice = Convert.ToDecimal(row.Cells["UnitPrice"].Value ?? 0);
                                     decimal totalPrice = Convert.ToDecimal(row.Cells["TotalPrice"].Value ?? 0);
                                     string remarks = row.Cells["Remarks"].Value?.ToString() ?? "";  // 如果沒填寫，將其設為空字串;
-
+                                    if (string.IsNullOrEmpty(partName)) continue;
                                     string insertDetailsSQL = @"
                                         INSERT INTO WorkOrderDetails (WorkOrderID, PartName, Quantity, UnitPrice, TotalPrice, Remarks)
                                         VALUES (@workOrderID, @partName, @quantity, @unitPrice, @totalPrice, @remarks);

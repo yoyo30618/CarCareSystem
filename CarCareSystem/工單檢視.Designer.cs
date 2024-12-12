@@ -36,11 +36,6 @@
             Lbl_日期 = new Label();
             Btn_取消 = new Button();
             DGV_工作單零件 = new DataGridView();
-            PartName = new DataGridViewTextBoxColumn();
-            UnitPrice = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            TotalPrice = new DataGridViewTextBoxColumn();
-            Remarks = new DataGridViewTextBoxColumn();
             Lbl_車輛年份 = new Label();
             Lbl_廠牌型式 = new Label();
             Lbl_牌照號碼 = new Label();
@@ -54,6 +49,11 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            PartName = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            TotalPrice = new DataGridViewTextBoxColumn();
+            Remarks = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -133,36 +133,6 @@
             DGV_工作單零件.Name = "DGV_工作單零件";
             DGV_工作單零件.Size = new Size(864, 271);
             DGV_工作單零件.TabIndex = 47;
-            // 
-            // PartName
-            // 
-            PartName.HeaderText = "零件名稱";
-            PartName.Name = "PartName";
-            PartName.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            UnitPrice.HeaderText = "單價";
-            UnitPrice.Name = "UnitPrice";
-            UnitPrice.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "數量";
-            Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            TotalPrice.HeaderText = "總價";
-            TotalPrice.Name = "TotalPrice";
-            TotalPrice.ReadOnly = true;
-            // 
-            // Remarks
-            // 
-            Remarks.HeaderText = "備註";
-            Remarks.Name = "Remarks";
-            Remarks.ReadOnly = true;
             // 
             // Lbl_車輛年份
             // 
@@ -299,6 +269,37 @@
             panel3.Size = new Size(949, 57);
             panel3.TabIndex = 72;
             // 
+            // PartName
+            // 
+            PartName.FillWeight = 300F;
+            PartName.HeaderText = "零件名稱";
+            PartName.Name = "PartName";
+            PartName.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            UnitPrice.HeaderText = "單價";
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            Quantity.HeaderText = "數量";
+            Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
+            // 
+            // TotalPrice
+            // 
+            TotalPrice.HeaderText = "總價";
+            TotalPrice.Name = "TotalPrice";
+            TotalPrice.ReadOnly = true;
+            // 
+            // Remarks
+            // 
+            Remarks.HeaderText = "備註";
+            Remarks.Name = "Remarks";
+            Remarks.ReadOnly = true;
+            // 
             // 工單檢視
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -352,13 +353,13 @@
         private RichTextBox RTB_備註;
         private Label Lbl_地址;
         private Label Lbl_總金額;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
         private DataGridViewTextBoxColumn PartName;
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn TotalPrice;
         private DataGridViewTextBoxColumn Remarks;
-        private Panel panel1;
-        private Panel panel2;
-        private Panel panel3;
     }
 }

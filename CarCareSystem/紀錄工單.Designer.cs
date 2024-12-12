@@ -169,7 +169,6 @@
             // 
             // DGV_工作單零件
             // 
-            DGV_工作單零件.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_工作單零件.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_工作單零件.Location = new Point(8, 229);
             DGV_工作單零件.Name = "DGV_工作單零件";

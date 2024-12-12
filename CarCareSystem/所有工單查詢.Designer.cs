@@ -35,11 +35,6 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             Btn_取消 = new Button();
             DGV_工作單零件 = new DataGridView();
-            PartName = new DataGridViewTextBoxColumn();
-            UnitPrice = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            TotalPrice = new DataGridViewTextBoxColumn();
-            Remarks = new DataGridViewTextBoxColumn();
             Lbl_總金額 = new Label();
             Lbl_標題 = new Label();
             Lbl_波浪符號 = new Label();
@@ -51,6 +46,11 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            PartName = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            TotalPrice = new DataGridViewTextBoxColumn();
+            Remarks = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -79,47 +79,6 @@
             DGV_工作單零件.ReadOnly = true;
             DGV_工作單零件.Size = new Size(860, 386);
             DGV_工作單零件.TabIndex = 47;
-            // 
-            // PartName
-            // 
-            dataGridViewCellStyle1.Font = new Font("標楷體", 12F);
-            PartName.DefaultCellStyle = dataGridViewCellStyle1;
-            PartName.FillWeight = 200F;
-            PartName.HeaderText = "零件名稱";
-            PartName.Name = "PartName";
-            PartName.ReadOnly = true;
-            // 
-            // UnitPrice
-            // 
-            dataGridViewCellStyle2.Font = new Font("標楷體", 12F);
-            UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            UnitPrice.HeaderText = "零件單價";
-            UnitPrice.Name = "UnitPrice";
-            UnitPrice.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            dataGridViewCellStyle3.Font = new Font("標楷體", 12F);
-            Quantity.DefaultCellStyle = dataGridViewCellStyle3;
-            Quantity.HeaderText = "數量";
-            Quantity.Name = "Quantity";
-            Quantity.ReadOnly = true;
-            // 
-            // TotalPrice
-            // 
-            dataGridViewCellStyle4.Font = new Font("標楷體", 12F);
-            TotalPrice.DefaultCellStyle = dataGridViewCellStyle4;
-            TotalPrice.HeaderText = "總價";
-            TotalPrice.Name = "TotalPrice";
-            TotalPrice.ReadOnly = true;
-            // 
-            // Remarks
-            // 
-            dataGridViewCellStyle5.Font = new Font("標楷體", 12F);
-            Remarks.DefaultCellStyle = dataGridViewCellStyle5;
-            Remarks.HeaderText = "備註";
-            Remarks.Name = "Remarks";
-            Remarks.ReadOnly = true;
             // 
             // Lbl_總金額
             // 
@@ -238,6 +197,47 @@
             panel3.Size = new Size(959, 69);
             panel3.TabIndex = 70;
             // 
+            // PartName
+            // 
+            dataGridViewCellStyle1.Font = new Font("標楷體", 12F);
+            PartName.DefaultCellStyle = dataGridViewCellStyle1;
+            PartName.FillWeight = 300F;
+            PartName.HeaderText = "零件名稱";
+            PartName.Name = "PartName";
+            PartName.ReadOnly = true;
+            // 
+            // UnitPrice
+            // 
+            dataGridViewCellStyle2.Font = new Font("標楷體", 12F);
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            UnitPrice.HeaderText = "零件單價";
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            dataGridViewCellStyle3.Font = new Font("標楷體", 12F);
+            Quantity.DefaultCellStyle = dataGridViewCellStyle3;
+            Quantity.HeaderText = "數量";
+            Quantity.Name = "Quantity";
+            Quantity.ReadOnly = true;
+            // 
+            // TotalPrice
+            // 
+            dataGridViewCellStyle4.Font = new Font("標楷體", 12F);
+            TotalPrice.DefaultCellStyle = dataGridViewCellStyle4;
+            TotalPrice.HeaderText = "總價";
+            TotalPrice.Name = "TotalPrice";
+            TotalPrice.ReadOnly = true;
+            // 
+            // Remarks
+            // 
+            dataGridViewCellStyle5.Font = new Font("標楷體", 12F);
+            Remarks.DefaultCellStyle = dataGridViewCellStyle5;
+            Remarks.HeaderText = "備註";
+            Remarks.Name = "Remarks";
+            Remarks.ReadOnly = true;
+            // 
             // 所有工單查詢
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -273,12 +273,12 @@
         private Label Lbl_查詢關鍵字;
         private Label label1;
         private Panel panel1;
+        private Panel panel3;
+        private Panel panel2;
         private DataGridViewTextBoxColumn PartName;
         private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn TotalPrice;
         private DataGridViewTextBoxColumn Remarks;
-        private Panel panel3;
-        private Panel panel2;
     }
 }
