@@ -488,3 +488,4 @@ C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSy
 C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSystem\obj\Release\net8.0-windows\win-x86\CarCareSystem.genruntimeconfig.cache
 C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSystem\obj\Release\net8.0-windows\win-x86\ref\CarCareSystem.dll
 C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSystem\obj\Release\net8.0-windows\win-x86\CarCareSystem.所有工單查詢.resources
+C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSystem\obj\Release\net8.0-windows\win-x86\CarCareSystem.sourcelink.json

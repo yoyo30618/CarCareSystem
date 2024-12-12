@@ -1,12 +1,245 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u7D00\u9304\u5DE5\u55AE.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u7D00\u9304\u5DE5\u55AE.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u7D00\u9304\u5DE5\u55AE.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u7D00\u9304\u5DE5\u55AE.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u7D00\u9304\u5DE5\u55AE.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u7D00\u9304\u5DE5\u55AE.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u5DE5\u55AE\u6AA2\u8996.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u5DE5\u55AE\u6AA2\u8996.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u5DE5\u55AE\u6AA2\u8996.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u5DE5\u55AE\u6AA2\u8996.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u4E3B\u756B\u9762.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u4E3B\u756B\u9762.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u8ECA\u8F1B\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u8ECA\u8F1B\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u8ECA\u8F1B\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u8ECA\u8F1B\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|c:\\users\\bear\\desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\carcaresystem\\carcaresystem\\\u96F6\u4EF6\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u96F6\u4EF6\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\carcaresystem\\\u96F6\u4EF6\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{162A3EF9-2A0B-4385-92AA-93C97FFD7916}|CarCareSystem\\CarCareSystem.csproj|solutionrelative:carcaresystem\\\u96F6\u4EF6\u767B\u9304.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "\u4E3B\u756B\u9762.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u4E3B\u756B\u9762.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u4E3B\u756B\u9762.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u4E3B\u756B\u9762.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u4E3B\u756B\u9762.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:19.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "\u8ECA\u8F1B\u767B\u9304.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "RelativeToolTip": "CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAhwJ0AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:11.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "\u8ECA\u8F1B\u767B\u9304.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u8ECA\u8F1B\u767B\u9304.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:09.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeToolTip": "CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAhwFMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:01.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "\u7D00\u9304\u5DE5\u55AE.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs [Design]",
+              "RelativeToolTip": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:32:37.962Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "\u5DE5\u55AE\u67E5\u8A62.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeToolTip": "CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:31.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u6240\u6709\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:00.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "\u7D00\u9304\u5DE5\u55AE.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "RelativeToolTip": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.cs",
+              "ViewState": "AQIAABsCAAAAAAAAAAAewB0CAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:32:43.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "\u5DE5\u55AE\u6AA2\u8996.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:20.533Z",
+              "EditorCaption": " [\u8A2D\u8A08]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "\u7D00\u9304\u5DE5\u55AE.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.Designer.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.Designer.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.Designer.cs",
+              "RelativeToolTip": "CarCareSystem\\\u7D00\u9304\u5DE5\u55AE.Designer.cs",
+              "ViewState": "AQIAAKQAAAAAAAAAAAAAALQAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:39:43.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "\u5DE5\u55AE\u6AA2\u8996.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "RelativeToolTip": "CarCareSystem\\\u5DE5\u55AE\u6AA2\u8996.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAhwF0AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:22.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u5DE5\u55AE\u67E5\u8A62.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:36:29.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "\u96F6\u4EF6\u767B\u9304.cs",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "RelativeToolTip": "CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAhwIsAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:35:52.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "\u96F6\u4EF6\u767B\u9304.cs [\u8A2D\u8A08]",
+              "DocumentMoniker": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "RelativeDocumentMoniker": "CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs",
+              "ToolTip": "C:\\Users\\Bear\\Desktop\\\u83EF\u665F\u6C7D\u8ECA\u4FEE\u8B77\u5EE0_\u611B\u8ECA\u5E33\u672C\\CarCareSystem\\CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs [\u8A2D\u8A08]",
+              "RelativeToolTip": "CarCareSystem\\\u96F6\u4EF6\u767B\u9304.cs [\u8A2D\u8A08]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:35:50.737Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

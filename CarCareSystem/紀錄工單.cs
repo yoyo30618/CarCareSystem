@@ -281,13 +281,13 @@ namespace CarCareSystem
             try
             {
 
-                string SQL = @"SELECT * FROM Parts Where Name like @關鍵字 or Abbreviation like @關鍵字";
+                string SQL = @"SELECT * FROM Parts Where UPPER(Name) like @關鍵字 or UPPER(Abbreviation) like @關鍵字";
                 using (var connection = new SQLiteConnection(ConnectionString))
                 {
                     connection.Open();
                     using (var command = new SQLiteCommand(SQL, connection))
                     {
-                        command.Parameters.AddWithValue("@關鍵字", $"%{partName}%");
+                        command.Parameters.AddWithValue("@關鍵字", $"%{partName.ToUpper()}%");
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -449,13 +449,13 @@ namespace CarCareSystem
                 if (!string.IsNullOrEmpty(selectedPart) && selectedPart != "新零件")
                 {
                     // 查詢資料庫，根據選擇的零件名稱取得相關資訊
-                    string SQL = @"SELECT Name, Category, Price FROM Parts WHERE Name = @partName";
+                    string SQL = @"SELECT Name, Category, Price FROM Parts WHERE UPPER(Name) = @partName";
                     using (var connection = new SQLiteConnection(ConnectionString))
                     {
                         connection.Open();
                         using (var command = new SQLiteCommand(SQL, connection))
                         {
-                            command.Parameters.AddWithValue("@partName", selectedPart);
+                            command.Parameters.AddWithValue("@partName", selectedPart.ToUpper());
                             using (var reader = command.ExecuteReader())
                             {
                                 if (reader.Read())
@@ -513,13 +513,13 @@ namespace CarCareSystem
             int rowIndex = DGV_工作單零件.CurrentRow.Index;
             DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = 0;
             DGV_工作單零件.Rows[rowIndex].Cells["TotalPrice"].Value = 0; // 清空總價
-            string SQL = @"SELECT * FROM Parts WHERE Name = @partName";
+            string SQL = @"SELECT * FROM Parts WHERE UPPER(Name) = @partName";
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 using (var command = new SQLiteCommand(SQL, connection))
                 {
-                    command.Parameters.AddWithValue("@partName", partName);
+                    command.Parameters.AddWithValue("@partName", partName.ToUpper());
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -540,13 +540,13 @@ namespace CarCareSystem
         private void LoadFilteredParts(string filter, DataGridViewComboBoxCell comboBoxCell)
         {
             // 根據輸入文字過濾零件名稱
-            string SQL = @"SELECT Name,Abbreviation FROM Parts WHERE Name LIKE @filter or Abbreviation LIKE @filter";
+            string SQL = @"SELECT Name,Abbreviation FROM Parts WHERE UPPER(Name) LIKE @filter or UPPER(Abbreviation) LIKE @filter";
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 using (var command = new SQLiteCommand(SQL, connection))
                 {
-                    command.Parameters.AddWithValue("@filter", "%" + filter + "%");
+                    command.Parameters.AddWithValue("@filter", "%" + filter.ToUpper() + "%");
                     bool Find = false;
                     using (var reader = command.ExecuteReader())
                     {
@@ -555,8 +555,8 @@ namespace CarCareSystem
                         {
                             filteredItems.Add(reader["Name"].ToString());
                             if (
-                                (string.IsNullOrEmpty(reader["Name"].ToString()) && reader["Name"].ToString() == filter) ||
-                                (!string.IsNullOrEmpty(reader["Abbreviation"].ToString()) && reader["Abbreviation"].ToString() == filter)
+                                (string.IsNullOrEmpty(reader["Name"].ToString().ToUpper()) && reader["Name"].ToString().ToUpper() == filter.ToUpper()) ||
+                                (!string.IsNullOrEmpty(reader["Abbreviation"].ToString().ToUpper()) && reader["Abbreviation"].ToString().ToUpper() == filter.ToUpper())
                                 )
                                 Find = true;
                         }
