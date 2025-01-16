@@ -46,7 +46,7 @@ namespace CarCareSystem
                             if (reader.Read())
                             {
 
-                                Lbl_日期.Text = "日期：" + reader["Timestamp"].ToString();
+                                Lbl_日期.Text = "日期：" + (int.Parse(reader["Timestamp"].ToString().Split('/')[0])-1911).ToString ()+ '/' + (reader["Timestamp"].ToString().Split('/')[1]).ToString() + '/' + (reader["Timestamp"].ToString().Split('/')[2]).ToString().Split(' ')[0];
                                 Lbl_里程.Text = "里程：" + reader["Mileage"].ToString();
                                 Lbl_總金額.Text = "總金額：" + reader["WorkOrderTotalPrice"].ToString();
                                 

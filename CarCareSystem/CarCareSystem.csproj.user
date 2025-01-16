@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\Bear\Desktop\華晟汽車修護廠_愛車帳本\CarCareSystem\CarCareSystem\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="主畫面.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="工單查詢.cs">
       <SubType>Form</SubType>
     </Compile>

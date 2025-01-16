@@ -20,7 +20,6 @@ namespace CarCareSystem
         public 零件登錄()
         {
             InitializeComponent();
-            Cbx_零件分類.SelectedIndex = Id;
             LoadParts(Tbx_零件登錄編輯搜尋框.Text);
         }
 
@@ -28,7 +27,7 @@ namespace CarCareSystem
         {
             try
             {
-                string SQL = @"SELECT Id,Category || ' ： ' || Name AS DisplayText FROM Parts 
+                string SQL = @"SELECT Id, Name AS DisplayText FROM Parts 
                         WHERE  UPPER(Category) like @關鍵字 
                         OR UPPER(Name) like @關鍵字 
                         OR UPPER(Abbreviation) like @關鍵字 
@@ -71,15 +70,15 @@ namespace CarCareSystem
 
             try
             {
-                string Category = Cbx_零件分類.SelectedItem.ToString();
+                string Category = "";
                 string Name = Tbx_零件名稱.Text;
                 string Price = Tbx_零件單價.Text;
                 string Abbreviation = Tbx_零件縮寫.Text;
                 string Notes = RTB_備註.Text;
 
-                if (string.IsNullOrEmpty(Category) || string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(Name))
                 {
-                    MessageBox.Show("零件分類與名稱不能為空！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("零件名稱不能為空！", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 string SQL = string.Empty;
@@ -148,7 +147,6 @@ namespace CarCareSystem
                                 {
                                     while (reader.Read())
                                     {
-                                        Cbx_零件分類.SelectedItem = reader["Category"].ToString();
                                         Tbx_零件名稱.Text = reader["Name"].ToString();
                                         Tbx_零件單價.Text = reader["Price"].ToString();
                                         Tbx_零件縮寫.Text = reader["Abbreviation"].ToString();
@@ -161,7 +159,6 @@ namespace CarCareSystem
                     else
                     {
                         Tbn_刪除.Enabled = false;
-                        Cbx_零件分類.SelectedIndex = 0;
                         Lbl_零件檔案編號.Text = "零件檔案編號：新零件";
                         Tbx_零件名稱.Text = "";
                         Tbx_零件單價.Text = "";
@@ -219,7 +216,6 @@ namespace CarCareSystem
                 LoadParts(Tbx_零件登錄編輯搜尋框.Text);
                 Id = 0;
                 Tbn_刪除.Enabled = false;
-                Cbx_零件分類.SelectedIndex = 0;
                 Lbl_零件檔案編號.Text = "車輛檔案編號：新建檔案";
                 Lbl_零件檔案編號.Text = "零件檔案編號：新零件";
                 Tbx_零件名稱.Text = "";

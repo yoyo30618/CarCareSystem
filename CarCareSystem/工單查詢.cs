@@ -18,11 +18,14 @@ namespace CarCareSystem
         {
             InitializeComponent();
             InitializeDataGridView();
+            DTP_起始時間.Value = DateTime.Today.AddYears(-1); // 1年前
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
+            DTP_起始時間.CustomFormat = string.Format("{0}/MM/dd", DTP_起始時間.Value.AddYears(-1911).Year.ToString("00"));
+            DTP_結束時間.Value = DateTime.Today.AddDays(1); // 1天候
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
+            DTP_結束時間.CustomFormat = string.Format("{0}/MM/dd", DTP_結束時間.Value.AddYears(-1911).Year.ToString("00"));
             string keyword = Tbx_關鍵字.Text.Trim();
             LoadWorkOrders(keyword);
-
-            DTP_起始時間.Value = DateTime.Today.AddYears(-50); // 50年前
-            DTP_結束時間.Value = DateTime.Today.AddYears(1); // 50年前
         }
 
         private void Tbx_關鍵字_TextChanged(object sender, EventArgs e)
@@ -104,7 +107,7 @@ namespace CarCareSystem
                             DGV_工單列表.Rows.Add(
                                 "",
                                 reader["WorkOrderID"].ToString(),
-                                reader["Timestamp"].ToString(),
+                                (int.Parse(reader["Timestamp"].ToString().Split('/')[0]) - 1911).ToString() + '/' + (reader["Timestamp"].ToString().Split('/')[1]).ToString() + '/' + (reader["Timestamp"].ToString().Split('/')[2]).ToString().Split(' ')[0],
                                 reader["LicensePlate"].ToString(),
                                 Convert.ToDecimal(reader["WorkOrderTotalPrice"]).ToString("C")
                             );
@@ -127,11 +130,17 @@ namespace CarCareSystem
         }
         private void ShowWorkOrderDetails(int workOrderID)
         {
-            // 打開舊工單
-            var 工單檢視 = new 工單檢視();
-            工單檢視.WorkOrderID = workOrderID;  // 設定已存在的工單ID
-            工單檢視.LoadWorkOrderData();
-            工單檢視.ShowDialog();
+            //// 打開舊工單
+            //var 工單檢視 = new 工單檢視();
+            //工單檢視.WorkOrderID = workOrderID;  // 設定已存在的工單ID
+            //工單檢視.LoadWorkOrderData();
+            //工單檢視.ShowDialog();
+
+
+            var 紀錄工單 = new 紀錄工單();
+            紀錄工單.OrgWorkOrderID = workOrderID;
+            紀錄工單.LoadWorkOrderData();
+            紀錄工單.ShowDialog();
 
         }
 
@@ -234,6 +243,10 @@ namespace CarCareSystem
                     DTP_結束時間.Value = DTP_起始時間.Value.AddDays(1);
                 }
             }
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
+            DTP_起始時間.CustomFormat = string.Format("{0}/MM/dd", DTP_起始時間.Value.AddYears(-1911).Year.ToString("00"));
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
+            DTP_結束時間.CustomFormat = string.Format("{0}/MM/dd", DTP_結束時間.Value.AddYears(-1911).Year.ToString("00"));
             string keyword = Tbx_關鍵字.Text.Trim();
             LoadWorkOrders(keyword);
         }

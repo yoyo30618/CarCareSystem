@@ -38,6 +38,8 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            Btn_備份資料到桌面 = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // Btn_車輛登錄
@@ -110,6 +112,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.Controls.Add(Btn_備份資料到桌面);
             panel1.Location = new Point(-284, 300);
             panel1.Name = "panel1";
             panel1.Size = new Size(1009, 230);
@@ -120,7 +123,7 @@
             panel2.BackColor = Color.LemonChiffon;
             panel2.Location = new Point(-284, 107);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1133, 200);
+            panel2.Size = new Size(854, 200);
             panel2.TabIndex = 77;
             // 
             // panel3
@@ -130,6 +133,17 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(959, 204);
             panel3.TabIndex = 76;
+            // 
+            // Btn_備份資料到桌面
+            // 
+            Btn_備份資料到桌面.Font = new Font("標楷體", 16F);
+            Btn_備份資料到桌面.Location = new Point(708, 31);
+            Btn_備份資料到桌面.Name = "Btn_備份資料到桌面";
+            Btn_備份資料到桌面.Size = new Size(129, 83);
+            Btn_備份資料到桌面.TabIndex = 79;
+            Btn_備份資料到桌面.Text = "備份資料\r\n(到桌面)";
+            Btn_備份資料到桌面.UseVisualStyleBackColor = true;
+            Btn_備份資料到桌面.Click += Btn_備份資料到桌面_Click;
             // 
             // 主畫面
             // 
@@ -150,6 +164,7 @@
             MaximizeBox = false;
             Name = "主畫面";
             Text = "華晟汽車修護廠 愛車帳本";
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,5 +180,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private Button Btn_備份資料到桌面;
     }
 }

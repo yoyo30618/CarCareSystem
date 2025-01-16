@@ -32,7 +32,6 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             Btn_取消 = new Button();
             DGV_工作單零件 = new DataGridView();
             Lbl_總金額 = new Label();
@@ -47,10 +46,9 @@
             panel2 = new Panel();
             panel3 = new Panel();
             PartName = new DataGridViewTextBoxColumn();
-            UnitPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
             TotalPrice = new DataGridViewTextBoxColumn();
-            Remarks = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -73,7 +71,7 @@
             DGV_工作單零件.AllowUserToResizeColumns = false;
             DGV_工作單零件.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_工作單零件.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_工作單零件.Columns.AddRange(new DataGridViewColumn[] { PartName, UnitPrice, Quantity, TotalPrice, Remarks });
+            DGV_工作單零件.Columns.AddRange(new DataGridViewColumn[] { PartName, Quantity, UnitPrice, TotalPrice });
             DGV_工作單零件.Location = new Point(36, 38);
             DGV_工作單零件.Name = "DGV_工作單零件";
             DGV_工作單零件.ReadOnly = true;
@@ -206,37 +204,32 @@
             PartName.Name = "PartName";
             PartName.ReadOnly = true;
             // 
-            // UnitPrice
-            // 
-            dataGridViewCellStyle2.Font = new Font("標楷體", 12F);
-            UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
-            UnitPrice.HeaderText = "零件單價";
-            UnitPrice.Name = "UnitPrice";
-            UnitPrice.ReadOnly = true;
-            // 
             // Quantity
             // 
-            dataGridViewCellStyle3.Font = new Font("標楷體", 12F);
-            Quantity.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Font = new Font("標楷體", 12F);
+            Quantity.DefaultCellStyle = dataGridViewCellStyle2;
             Quantity.HeaderText = "數量";
             Quantity.Name = "Quantity";
             Quantity.ReadOnly = true;
             // 
+            // UnitPrice
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Font = new Font("標楷體", 12F);
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            UnitPrice.HeaderText = "零件單價";
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            // 
             // TotalPrice
             // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Font = new Font("標楷體", 12F);
             TotalPrice.DefaultCellStyle = dataGridViewCellStyle4;
             TotalPrice.HeaderText = "總價";
             TotalPrice.Name = "TotalPrice";
             TotalPrice.ReadOnly = true;
-            // 
-            // Remarks
-            // 
-            dataGridViewCellStyle5.Font = new Font("標楷體", 12F);
-            Remarks.DefaultCellStyle = dataGridViewCellStyle5;
-            Remarks.HeaderText = "備註";
-            Remarks.Name = "Remarks";
-            Remarks.ReadOnly = true;
             // 
             // 所有工單查詢
             // 
@@ -276,9 +269,8 @@
         private Panel panel3;
         private Panel panel2;
         private DataGridViewTextBoxColumn PartName;
-        private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn TotalPrice;
-        private DataGridViewTextBoxColumn Remarks;
     }
 }

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(紀錄工單));
             label1 = new Label();
             Cbx_車輛選擇 = new ComboBox();
@@ -55,7 +59,14 @@
             Lbl_總金額 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            Btn_建立新零件 = new Button();
             panel3 = new Panel();
+            PartSelection = new DataGridViewComboBoxColumn();
+            PartName = new DataGridViewTextBoxColumn();
+            Quantity = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
+            TotalPrice = new DataGridViewTextBoxColumn();
+            刪除 = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -169,7 +180,17 @@
             // 
             // DGV_工作單零件
             // 
+            DGV_工作單零件.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_工作單零件.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGV_工作單零件.Columns.AddRange(new DataGridViewColumn[] { PartSelection, PartName, Quantity, UnitPrice, TotalPrice, 刪除 });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("標楷體", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 136);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            DGV_工作單零件.DefaultCellStyle = dataGridViewCellStyle4;
             DGV_工作單零件.Location = new Point(8, 229);
             DGV_工作單零件.Name = "DGV_工作單零件";
             DGV_工作單零件.Size = new Size(872, 228);
@@ -180,6 +201,9 @@
             DGV_工作單零件.CellValueChanged += DGV_工作單零件_CellValueChanged;
             DGV_工作單零件.DefaultValuesNeeded += DGV_工作單零件_DefaultValuesNeeded;
             DGV_工作單零件.EditingControlShowing += DGV_工作單零件_EditingControlShowing;
+            DGV_工作單零件.RowsAdded += DGV_工作單零件_RowsAdded;
+            DGV_工作單零件.KeyDown += DGV_工作單零件_KeyDown;
+            DGV_工作單零件.PreviewKeyDown += DGV_工作單零件_PreviewKeyDown;
             // 
             // Tbx_車輛選擇
             // 
@@ -237,9 +261,9 @@
             // Btn_建立新車輛
             // 
             Btn_建立新車輛.Font = new Font("標楷體", 14.25F);
-            Btn_建立新車輛.Location = new Point(579, 47);
+            Btn_建立新車輛.Location = new Point(575, 9);
             Btn_建立新車輛.Name = "Btn_建立新車輛";
-            Btn_建立新車輛.Size = new Size(160, 47);
+            Btn_建立新車輛.Size = new Size(127, 47);
             Btn_建立新車輛.TabIndex = 60;
             Btn_建立新車輛.Text = "建立新車輛";
             Btn_建立新車輛.UseVisualStyleBackColor = true;
@@ -285,6 +309,7 @@
             DTP_日期.Name = "DTP_日期";
             DTP_日期.Size = new Size(169, 30);
             DTP_日期.TabIndex = 64;
+            DTP_日期.ValueChanged += DTP_日期_ValueChanged;
             // 
             // RTB_備註
             // 
@@ -329,11 +354,24 @@
             // panel2
             // 
             panel2.BackColor = Color.LemonChiffon;
+            panel2.Controls.Add(Btn_建立新零件);
             panel2.Controls.Add(RTB_備註);
+            panel2.Controls.Add(Btn_建立新車輛);
             panel2.Location = new Point(-7, 43);
             panel2.Name = "panel2";
             panel2.Size = new Size(961, 414);
             panel2.TabIndex = 69;
+            // 
+            // Btn_建立新零件
+            // 
+            Btn_建立新零件.Font = new Font("標楷體", 14.25F);
+            Btn_建立新零件.Location = new Point(737, 11);
+            Btn_建立新零件.Name = "Btn_建立新零件";
+            Btn_建立新零件.Size = new Size(127, 45);
+            Btn_建立新零件.TabIndex = 70;
+            Btn_建立新零件.Text = "建立新零件";
+            Btn_建立新零件.UseVisualStyleBackColor = true;
+            Btn_建立新零件.Click += Btn_建立新零件_Click;
             // 
             // panel3
             // 
@@ -342,6 +380,49 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(920, 62);
             panel3.TabIndex = 1;
+            // 
+            // PartSelection
+            // 
+            PartSelection.HeaderText = "零件選擇";
+            PartSelection.Name = "PartSelection";
+            // 
+            // PartName
+            // 
+            PartName.HeaderText = "零件名稱";
+            PartName.Name = "PartName";
+            // 
+            // Quantity
+            // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle1;
+            Quantity.FillWeight = 15F;
+            Quantity.HeaderText = "數量";
+            Quantity.Name = "Quantity";
+            // 
+            // UnitPrice
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            UnitPrice.FillWeight = 30F;
+            UnitPrice.HeaderText = "單價";
+            UnitPrice.Name = "UnitPrice";
+            // 
+            // TotalPrice
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            TotalPrice.DefaultCellStyle = dataGridViewCellStyle3;
+            TotalPrice.FillWeight = 50F;
+            TotalPrice.HeaderText = "總價";
+            TotalPrice.Name = "TotalPrice";
+            TotalPrice.ReadOnly = true;
+            // 
+            // 刪除
+            // 
+            刪除.FillWeight = 20F;
+            刪除.HeaderText = "刪除";
+            刪除.Name = "刪除";
+            刪除.Text = "刪除";
+            刪除.UseColumnTextForButtonValue = true;
             // 
             // 紀錄工單
             // 
@@ -354,7 +435,6 @@
             Controls.Add(Lbl_備註);
             Controls.Add(Lbl_行動電話);
             Controls.Add(Lbl_住家電話);
-            Controls.Add(Btn_建立新車輛);
             Controls.Add(Lbl_車輛年份);
             Controls.Add(Lbl_廠牌型式);
             Controls.Add(Lbl_牌照號碼);
@@ -414,5 +494,12 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private Button Btn_建立新零件;
+        private DataGridViewComboBoxColumn PartSelection;
+        private DataGridViewTextBoxColumn PartName;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn UnitPrice;
+        private DataGridViewTextBoxColumn TotalPrice;
+        private DataGridViewButtonColumn 刪除;
     }
 }

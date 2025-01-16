@@ -40,8 +40,6 @@
             Btn_儲存 = new Button();
             Lbl_零件登錄 = new Label();
             Lbl_備註 = new Label();
-            Lbl_零件分類 = new Label();
-            Cbx_零件分類 = new ComboBox();
             Tbn_刪除 = new Button();
             Tbx_零件單價 = new TextBox();
             Lbl_零件單價 = new Label();
@@ -58,7 +56,7 @@
             Lbl_零件檔案編號.AutoSize = true;
             Lbl_零件檔案編號.BackColor = Color.LightGreen;
             Lbl_零件檔案編號.Font = new Font("標楷體", 16F);
-            Lbl_零件檔案編號.Location = new Point(21, 92);
+            Lbl_零件檔案編號.Location = new Point(28, 160);
             Lbl_零件檔案編號.Name = "Lbl_零件檔案編號";
             Lbl_零件檔案編號.Size = new Size(230, 22);
             Lbl_零件檔案編號.TabIndex = 1;
@@ -148,7 +146,7 @@
             Lbl_零件登錄.AutoSize = true;
             Lbl_零件登錄.BackColor = Color.LightGreen;
             Lbl_零件登錄.Font = new Font("標楷體", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 136);
-            Lbl_零件登錄.Location = new Point(53, 32);
+            Lbl_零件登錄.Location = new Point(60, 100);
             Lbl_零件登錄.Name = "Lbl_零件登錄";
             Lbl_零件登錄.Size = new Size(128, 27);
             Lbl_零件登錄.TabIndex = 0;
@@ -164,28 +162,6 @@
             Lbl_備註.Size = new Size(54, 22);
             Lbl_備註.TabIndex = 4;
             Lbl_備註.Text = "備註";
-            // 
-            // Lbl_零件分類
-            // 
-            Lbl_零件分類.AutoSize = true;
-            Lbl_零件分類.BackColor = Color.LightGreen;
-            Lbl_零件分類.Font = new Font("標楷體", 16F);
-            Lbl_零件分類.Location = new Point(9, 158);
-            Lbl_零件分類.Name = "Lbl_零件分類";
-            Lbl_零件分類.Size = new Size(98, 22);
-            Lbl_零件分類.TabIndex = 2;
-            Lbl_零件分類.Text = "零件分類";
-            // 
-            // Cbx_零件分類
-            // 
-            Cbx_零件分類.DropDownStyle = ComboBoxStyle.DropDownList;
-            Cbx_零件分類.Font = new Font("標楷體", 16F);
-            Cbx_零件分類.FormattingEnabled = true;
-            Cbx_零件分類.Items.AddRange(new object[] { "耗材", "零件" });
-            Cbx_零件分類.Location = new Point(113, 155);
-            Cbx_零件分類.Name = "Cbx_零件分類";
-            Cbx_零件分類.Size = new Size(160, 29);
-            Cbx_零件分類.TabIndex = 8;
             // 
             // Tbn_刪除
             // 
@@ -252,6 +228,8 @@
             // 
             panel2.BackColor = Color.LightGreen;
             panel2.Controls.Add(Lbl_備註);
+            panel2.Controls.Add(Lbl_零件登錄);
+            panel2.Controls.Add(Lbl_零件檔案編號);
             panel2.Location = new Point(-7, -19);
             panel2.Name = "panel2";
             panel2.Size = new Size(594, 411);
@@ -275,8 +253,6 @@
             Controls.Add(Tbx_零件單價);
             Controls.Add(Lbl_零件單價);
             Controls.Add(Tbn_刪除);
-            Controls.Add(Cbx_零件分類);
-            Controls.Add(Lbl_零件檔案編號);
             Controls.Add(Lbl_零件登錄編輯搜尋);
             Controls.Add(Tbx_零件登錄編輯搜尋框);
             Controls.Add(Lbx_舊有零件資訊);
@@ -285,8 +261,6 @@
             Controls.Add(RTB_備註);
             Controls.Add(Btn_取消);
             Controls.Add(Btn_儲存);
-            Controls.Add(Lbl_零件登錄);
-            Controls.Add(Lbl_零件分類);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(panel3);
@@ -314,8 +288,6 @@
         private Button Btn_儲存;
         private Label Lbl_零件登錄;
         private Label Lbl_備註;
-        private Label Lbl_零件分類;
-        private ComboBox Cbx_零件分類;
         private Button Tbn_刪除;
         private TextBox Tbx_零件單價;
         private Label Lbl_零件單價;

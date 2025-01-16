@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(工單檢視));
             Lbl_標題 = new Label();
             RTB_工作單備註 = new RichTextBox();
@@ -50,8 +53,8 @@
             panel2 = new Panel();
             panel3 = new Panel();
             PartName = new DataGridViewTextBoxColumn();
-            UnitPrice = new DataGridViewTextBoxColumn();
             Quantity = new DataGridViewTextBoxColumn();
+            UnitPrice = new DataGridViewTextBoxColumn();
             TotalPrice = new DataGridViewTextBoxColumn();
             Remarks = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).BeginInit();
@@ -96,7 +99,7 @@
             Lbl_里程.AutoSize = true;
             Lbl_里程.BackColor = Color.LemonChiffon;
             Lbl_里程.Font = new Font("標楷體", 14.25F);
-            Lbl_里程.Location = new Point(422, 164);
+            Lbl_里程.Location = new Point(656, 87);
             Lbl_里程.Name = "Lbl_里程";
             Lbl_里程.Size = new Size(69, 19);
             Lbl_里程.TabIndex = 38;
@@ -128,7 +131,7 @@
             // 
             DGV_工作單零件.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGV_工作單零件.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGV_工作單零件.Columns.AddRange(new DataGridViewColumn[] { PartName, UnitPrice, Quantity, TotalPrice, Remarks });
+            DGV_工作單零件.Columns.AddRange(new DataGridViewColumn[] { PartName, Quantity, UnitPrice, TotalPrice, Remarks });
             DGV_工作單零件.Location = new Point(8, 186);
             DGV_工作單零件.Name = "DGV_工作單零件";
             DGV_工作單零件.Size = new Size(864, 271);
@@ -256,6 +259,7 @@
             // 
             panel2.BackColor = Color.LemonChiffon;
             panel2.Controls.Add(RTB_備註);
+            panel2.Controls.Add(Lbl_里程);
             panel2.Location = new Point(-20, 46);
             panel2.Name = "panel2";
             panel2.Size = new Size(961, 413);
@@ -276,20 +280,26 @@
             PartName.Name = "PartName";
             PartName.ReadOnly = true;
             // 
-            // UnitPrice
-            // 
-            UnitPrice.HeaderText = "單價";
-            UnitPrice.Name = "UnitPrice";
-            UnitPrice.ReadOnly = true;
-            // 
             // Quantity
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
+            Quantity.DefaultCellStyle = dataGridViewCellStyle1;
             Quantity.HeaderText = "數量";
             Quantity.Name = "Quantity";
             Quantity.ReadOnly = true;
             // 
+            // UnitPrice
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            UnitPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            UnitPrice.HeaderText = "單價";
+            UnitPrice.Name = "UnitPrice";
+            UnitPrice.ReadOnly = true;
+            // 
             // TotalPrice
             // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            TotalPrice.DefaultCellStyle = dataGridViewCellStyle3;
             TotalPrice.HeaderText = "總價";
             TotalPrice.Name = "TotalPrice";
             TotalPrice.ReadOnly = true;
@@ -318,7 +328,6 @@
             Controls.Add(Btn_取消);
             Controls.Add(RTB_工作單備註);
             Controls.Add(Lbl_工作單備註);
-            Controls.Add(Lbl_里程);
             Controls.Add(Lbl_日期);
             Controls.Add(Lbl_標題);
             Controls.Add(panel1);
@@ -330,6 +339,7 @@
             Name = "工單檢視";
             ((System.ComponentModel.ISupportInitialize)DGV_工作單零件).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -357,8 +367,8 @@
         private Panel panel2;
         private Panel panel3;
         private DataGridViewTextBoxColumn PartName;
-        private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn UnitPrice;
         private DataGridViewTextBoxColumn TotalPrice;
         private DataGridViewTextBoxColumn Remarks;
     }

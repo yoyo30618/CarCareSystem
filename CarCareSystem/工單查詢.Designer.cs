@@ -90,6 +90,7 @@
             // DTP_起始時間
             // 
             DTP_起始時間.Font = new Font("標楷體", 16F);
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
             DTP_起始時間.Location = new Point(258, 104);
             DTP_起始時間.Name = "DTP_起始時間";
             DTP_起始時間.Size = new Size(200, 33);
@@ -99,6 +100,7 @@
             // DTP_結束時間
             // 
             DTP_結束時間.Font = new Font("標楷體", 16F);
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
             DTP_結束時間.Location = new Point(491, 104);
             DTP_結束時間.Name = "DTP_結束時間";
             DTP_結束時間.Size = new Size(200, 33);

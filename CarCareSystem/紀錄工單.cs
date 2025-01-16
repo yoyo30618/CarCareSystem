@@ -22,14 +22,21 @@ namespace CarCareSystem
         private bool isProcessing = false;
         private bool isUpdatingPartName = false;
         private string UpdatingPartName = string.Empty;
-        
-        public int? WorkOrderID { get; set; }  // 用來儲存傳入的工單ID
+
+        public int? OrgWorkOrderID { get; set; }  // 用來儲存傳入的工單ID
         public 紀錄工單()
         {
             InitializeComponent();
             LoadVehicles(Tbx_車輛選擇.Text);
             Cbx_車輛選擇.SelectedIndex = 0;
-            SetupDataGridView();
+            //SetupDataGridView();
+            DTP_日期.Format = DateTimePickerFormat.Custom;
+            DTP_日期.CustomFormat = string.Format("{0}/MM/dd", DTP_日期.Value.AddYears(-1911).Year.ToString("00"));
+            if (OrgWorkOrderID.HasValue)//讀取舊單
+            {
+                LoadWorkOrderData();
+            }
+            UpdateRowsData(0, 1); // 更新資料
         }
         private void LoadVehicles(string 關鍵字, bool ByID = false)
         {
@@ -83,10 +90,7 @@ namespace CarCareSystem
                 MessageBox.Show($"讀取車輛資料時發生錯誤: {ex.Message}", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void AddPartToGrid()
-        {
-            DGV_工作單零件.Rows.Add(); // 新增空白行
-        }
+
 
         private void Tbx_車輛選擇_TextChanged(object sender, EventArgs e)
         {
@@ -176,136 +180,18 @@ namespace CarCareSystem
             }
         }
 
-
-
-
-
-        private void SetupDataGridView()
-        {
-            DGV_工作單零件.DefaultCellStyle.Font = new Font("標楷體", 16); // 設定資料列的字體和大小
-
-            // 預設保持一列空白
-            DGV_工作單零件.AllowUserToAddRows = true;
-
-            // 零件選擇 (下拉式選單)
-            DataGridViewComboBoxColumn partSelectionColumn = new DataGridViewComboBoxColumn();
-            partSelectionColumn.HeaderText = "零件選擇";
-            partSelectionColumn.Name = "PartSelection";
-            partSelectionColumn.DisplayStyle = DataGridViewComboBoxDisplayStyle.ComboBox;
-            partSelectionColumn.Width = 200; // 設定寬度
-            LoadPartsIntoComboBox(partSelectionColumn);
-
-            // 零件分類 (下拉式選單)
-            DataGridViewComboBoxColumn partCategoryColumn = new DataGridViewComboBoxColumn();
-            partCategoryColumn.HeaderText = "零件分類";
-            partCategoryColumn.Name = "PartCategory";
-            partCategoryColumn.Items.AddRange("耗材", "零件");
-            partCategoryColumn.Width = 80; // 設定寬度
-
-            // 其他欄位
-            var partNameColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "零件名稱",
-                Name = "PartName",
-                Width = 200 // 設定寬度
-            };
-            var unitPriceColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "零件單價",
-                Name = "UnitPrice",
-                Width = 60 // 設定寬度
-            };
-            var quantityColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "數量",
-                Name = "Quantity",
-                Width = 60 // 設定寬度
-            };
-            var totalPriceColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "總價",
-                Name = "TotalPrice",
-                ReadOnly = true, // 設置為只讀
-                Width = 60 // 設定寬度
-            };
-            var remarksColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "備註",
-                Name = "Remarks",
-                Width = 100 // 設定寬度
-            };
-
-            // 刪除按鈕欄位
-            DataGridViewButtonColumn deleteColumn = new DataGridViewButtonColumn
-            {
-                HeaderText = "刪除",
-                Text = "刪除",
-                UseColumnTextForButtonValue = true,
-                Width = 60 // 設定寬度
-            };
-
-            // 將欄位加入 DataGridView
-            DGV_工作單零件.Columns.Add(partSelectionColumn);
-            DGV_工作單零件.Columns.Add(partCategoryColumn);
-            DGV_工作單零件.Columns.Add(partNameColumn);
-            DGV_工作單零件.Columns.Add(unitPriceColumn);
-            DGV_工作單零件.Columns.Add(quantityColumn);
-            DGV_工作單零件.Columns.Add(totalPriceColumn);
-            DGV_工作單零件.Columns.Add(remarksColumn);
-            DGV_工作單零件.Columns.Add(deleteColumn);
-        }
-
-
-        private void LoadPartsIntoComboBox(DataGridViewComboBoxColumn column)
-        {
-            try
-            {
-                column.Items.Clear(); // 清除原有項目
-
-                // 加入"新零件"選項
-                column.Items.Add("新零件");
-                string SQL = @"SELECT * FROM Parts";
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    connection.Open();
-                    using (var command = new SQLiteCommand(SQL, connection))
-                    {
-                        using (var reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                column.Items.Add(reader["Name"].ToString());
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"載入零件時發生錯誤: {ex.Message}");
-            }
-        }
-
         private void DGV_工作單零件_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (isUpdatingPartName)
             {
-                DGV_工作單零件.Rows[e.RowIndex].Cells["PartName"].Value = UpdatingPartName;
+                 DGV_工作單零件.Rows[e.RowIndex].Cells["PartName"].Value = UpdatingPartName;
+                UpdatingPartName=string.Empty;
                 isUpdatingPartName = false; // 重置標誌
                 return;
             }
 
-            //// 零件名稱輸入時，查詢並更新相關資訊
-            //if (e.ColumnIndex == DGV_工作單零件.Columns["PartName"].Index)
-            //{
-            //    string partName = DGV_工作單零件.Rows[e.RowIndex].Cells["PartName"].Value?.ToString();
-            //    UpdatePartDetails(e.RowIndex, partName);
-            //}
-
-
             // 計算總價
-            if ((e.ColumnIndex == DGV_工作單零件.Columns["UnitPrice"].Index ||
+            if (e.RowIndex > -1 && (e.ColumnIndex == DGV_工作單零件.Columns["UnitPrice"].Index ||
                  e.ColumnIndex == DGV_工作單零件.Columns["Quantity"].Index) &&
                  DGV_工作單零件.Rows[e.RowIndex].Cells["UnitPrice"].Value != null &&
                  DGV_工作單零件.Rows[e.RowIndex].Cells["Quantity"].Value != null)
@@ -313,46 +199,53 @@ namespace CarCareSystem
                 CalculateTotalPrice(e.RowIndex);
             }
         }
-        private void UpdatePartDetails(int rowIndex, string partName)
+        private void DGV_工作單零件_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-
-                string SQL = @"SELECT * FROM Parts Where UPPER(Name) like @關鍵字 or UPPER(Abbreviation) like @關鍵字";
-                using (var connection = new SQLiteConnection(ConnectionString))
-                {
-                    connection.Open();
-                    using (var command = new SQLiteCommand(SQL, connection))
-                    {
-                        command.Parameters.AddWithValue("@關鍵字", $"%{partName.ToUpper()}%");
-                        using (var reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                if (partName == reader["Name"].ToString())
-                                {
-                                    //DGV_工作單零件.Rows[rowIndex].Cells["PartSelection"].Value = reader["Name"].ToString();
-                                    DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = reader["Price"];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"查詢零件詳情時發生錯誤: {ex.Message}");
+                e.Handled = true;
+                e.SuppressKeyPress = true;  // 確保完全阻止 Enter 的預設行為
+                MoveToNextCell();
             }
         }
 
+        private void MoveToNextCell()
+        {
+            var currentCell = DGV_工作單零件.CurrentCell;
+            if (currentCell == null) return;
 
+            int nextColumnIndex = currentCell.ColumnIndex + 1;
+            int currentRowIndex = currentCell.RowIndex;
 
+            // 如果到達或超過最後一列
+            if (nextColumnIndex >= DGV_工作單零件.Columns.Count)
+            {
+                nextColumnIndex = 0;
+                currentRowIndex++;
+            }
 
+            // 如果是最後一行的最後一格，新增一行
+            if (currentRowIndex >= DGV_工作單零件.Rows.Count - 1 &&
+                nextColumnIndex >= DGV_工作單零件.Columns.Count - 1)
+            {
+                DGV_工作單零件.Rows.Add();  // 新增一行
+                currentRowIndex++;  // 移到新行
+                nextColumnIndex = 0;  // 從第一列開始
+            }
 
-
-
-
+            // 尋找下一個可編輯的欄位
+            while (nextColumnIndex < DGV_工作單零件.Columns.Count)
+            {
+                var nextCell = DGV_工作單零件.Rows[currentRowIndex].Cells[nextColumnIndex];
+                if (!DGV_工作單零件.Columns[nextColumnIndex].ReadOnly &&
+                    DGV_工作單零件.Columns[nextColumnIndex].Visible)
+                {
+                    DGV_工作單零件.CurrentCell = nextCell;
+                    return;
+                }
+                nextColumnIndex++;
+            }
+        }
 
 
         private void CalculateTotalPrice(int rowIndex)
@@ -403,17 +296,8 @@ namespace CarCareSystem
             var partSelectionColumn = DGV_工作單零件.Columns["PartSelection"] as DataGridViewComboBoxColumn;
             if (partSelectionColumn != null && partSelectionColumn.Items.Count > 0)
             {
-                e.Row.Cells["PartSelection"].Value = "新零件"; // 明確設定為"新零件"
+                e.Row.Cells["PartSelection"].Value = "";
             }
-            // 零件分類欄位
-            var partCategoryColumn = DGV_工作單零件.Columns["PartCategory"] as DataGridViewComboBoxColumn;
-            if (partCategoryColumn != null && partCategoryColumn.Items.Count > 0)
-            {
-                e.Row.Cells["PartCategory"].Value = "耗材"; // 預設為"耗材"
-            }
-            //e.Row.Cells["Quantity"].Value = 0;
-            //e.Row.Cells["UnitPrice"].Value = 0;
-            //e.Row.Cells["TotalPrice"].Value = 0;
         }
 
         private void DGV_工作單零件_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -449,7 +333,11 @@ namespace CarCareSystem
 
                 // 然後重新添加
                 textBox.KeyPress += TextBox_KeyPress;
+                // 先移除之前的事件處理器，以免重複綁定
+                textBox.KeyDown -= TextBox_KeyDown;
 
+                // 然後綁定新的事件處理器
+                textBox.KeyDown += TextBox_KeyDown;
                 if (DGV_工作單零件.CurrentCell.ColumnIndex == DGV_工作單零件.Columns["PartName"].Index)
                 {
                     textBox.TextChanged += TextBox_TextChanged;
@@ -468,6 +356,17 @@ namespace CarCareSystem
                 }
             }
         }
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                // 強制移動到右邊的單元格
+                MoveToNextCell();
+            }
+        }
+
         private void ComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
             // 取得選擇的零件名稱
@@ -477,13 +376,13 @@ namespace CarCareSystem
                 int rowIndex = DGV_工作單零件.CurrentRow.Index;
                 // 更新其他欄位資料
                 DGV_工作單零件.Rows[rowIndex].Cells["PartName"].Value = "";
-                DGV_工作單零件.Rows[rowIndex].Cells["PartCategory"].Value = "耗材";
-                DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = 0;
-                DGV_工作單零件.Rows[rowIndex].Cells["TotalPrice"].Value = 0;
+                //DGV_工作單零件.Rows[rowIndex].Cells["PartCategory"].Value = "耗材";
+                //    DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = 0;
+                //   DGV_工作單零件.Rows[rowIndex].Cells["TotalPrice"].Value = 0;
                 string selectedPart = comboBox.SelectedItem.ToString();
 
                 // 確保選擇的零件不是"新零件"或空白
-                if (!string.IsNullOrEmpty(selectedPart) && selectedPart != "新零件")
+                if (!string.IsNullOrEmpty(selectedPart))
                 {
                     // 查詢資料庫，根據選擇的零件名稱取得相關資訊
                     string SQL = @"SELECT Name, Category, Price FROM Parts WHERE UPPER(Name) = @partName";
@@ -501,7 +400,7 @@ namespace CarCareSystem
                                     string Name = reader["Name"].ToString();
                                     decimal price = Convert.ToDecimal(reader["Price"]);
                                     DGV_工作單零件.Rows[rowIndex].Cells["PartName"].Value = Name;
-                                    DGV_工作單零件.Rows[rowIndex].Cells["PartCategory"].Value = category;
+                                    //DGV_工作單零件.Rows[rowIndex].Cells["PartCategory"].Value = category;
                                     DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = price;
                                     var quantityCell = DGV_工作單零件.Rows[rowIndex].Cells["Quantity"];
                                     if (quantityCell.Value != null && decimal.TryParse(quantityCell.Value.ToString(), out decimal quantity))
@@ -528,15 +427,6 @@ namespace CarCareSystem
                     comboBoxCell.Items.Clear();
                     LoadFilteredParts(partName, comboBoxCell);
                 }
-                //var partSelectionValue = DGV_工作單零件.CurrentRow.Cells["PartSelection"].Value?.ToString();
-                //if (!string.IsNullOrEmpty(partSelectionValue) && partSelectionValue != partName)
-                //{
-                //    if (DGV_工作單零件.IsCurrentCellDirty)
-                //    {
-                //        DGV_工作單零件.EndEdit(); // 結束編輯狀態
-                //    }
-                //    DGV_工作單零件.BeginEdit(true);
-                //}
                 partName = DGV_工作單零件.CurrentRow.Cells["PartSelection"].Value.ToString();
                 if (!string.IsNullOrEmpty(partName))
                 {
@@ -600,7 +490,7 @@ namespace CarCareSystem
                         if (!Find)
                         {
                             if (string.IsNullOrEmpty(filter))
-                                comboBoxCell.Items.Add("新零件");
+                                comboBoxCell.Items.Add("");
                             else
                                 comboBoxCell.Items.Add(filter);
                         }
@@ -694,7 +584,19 @@ namespace CarCareSystem
                                 VALUES (@workOrderTotalPrice, @plateID,@Timestamp,@Mileage,@Remark);
                                 SELECT last_insert_rowid();
                             ";  // 取得新插入的 WorkOrderID
+                            if (OrgWorkOrderID.HasValue)
+                            {
+                                insertWorkOrderSQL = @"
+                                    UPDATE WorkOrders
+                                    SET WorkOrderTotalPrice = @workOrderTotalPrice,
+                                        PlateID = @plateID,
+                                        Timestamp = @Timestamp,
+                                        Mileage = @Mileage,
+                                        Remark = @Remark
+                                    WHERE WorkOrderID = @workOrderID;
+                                ";
 
+                            }
                             using (var command = new SQLiteCommand(insertWorkOrderSQL, connection))
                             {
                                 command.Parameters.AddWithValue("@workOrderTotalPrice", OrderTotalPrice);
@@ -702,14 +604,31 @@ namespace CarCareSystem
                                 command.Parameters.AddWithValue("@Timestamp", DTP_日期.Value);
                                 command.Parameters.AddWithValue("@Mileage", Tbx_里程.Text.ToString());
                                 command.Parameters.AddWithValue("@Remark", RTB_工作單備註.Text.ToString());
-                                int workOrderID = Convert.ToInt32(command.ExecuteScalar());  // 取得新插入的 WorkOrderID
+                                int workOrderID = 0;
+                                if (OrgWorkOrderID.HasValue)
+                                {
+                                    command.Parameters.AddWithValue("@workOrderID", OrgWorkOrderID);
+                                    command.ExecuteNonQuery();
+                                    workOrderID = (int)OrgWorkOrderID;
+                                    string DelDetailsSQL = @"DELETE FROM WorkOrderDetails WHERE WorkOrderID=@workOrderID;";
+
+                                    using (var detailCommand = new SQLiteCommand(DelDetailsSQL, connection))
+                                    {
+                                        detailCommand.Parameters.AddWithValue("@workOrderID", workOrderID);
+                                        detailCommand.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    workOrderID = Convert.ToInt32(command.ExecuteScalar());  // 取得新插入的 WorkOrderID
+                                }
                                 foreach (DataGridViewRow row in DGV_工作單零件.Rows)
                                 {
                                     string partName = row.Cells["PartName"].Value?.ToString() ?? "";  // 如果沒填寫，將其設為空字串
                                     int quantity = Convert.ToInt32(row.Cells["Quantity"].Value ?? 0);
                                     decimal unitPrice = Convert.ToDecimal(row.Cells["UnitPrice"].Value ?? 0);
                                     decimal totalPrice = Convert.ToDecimal(row.Cells["TotalPrice"].Value ?? 0);
-                                    string remarks = row.Cells["Remarks"].Value?.ToString() ?? "";  // 如果沒填寫，將其設為空字串;
+                                    string remarks = "";  // 如果沒填寫，將其設為空字串;
                                     if (string.IsNullOrEmpty(partName)) continue;
                                     string insertDetailsSQL = @"
                                         INSERT INTO WorkOrderDetails (WorkOrderID, PartName, Quantity, UnitPrice, TotalPrice, Remarks)
@@ -742,31 +661,112 @@ namespace CarCareSystem
                 }
             }
         }
+       
         public void LoadWorkOrderData()
         {
-            if (WorkOrderID.HasValue)
+            if (OrgWorkOrderID.HasValue)
             {
-                string query = @"SELECT PlateID FROM WorkOrders WHERE WorkOrderID = @workOrderID";
+                string query = @"SELECT * FROM WorkOrders W LEFT JOIN Vehicles P ON W.PlateID=P.Id WHERE WorkOrderID = @workOrderID";
                 using (var connection = new SQLiteConnection(ConnectionString))
                 {
                     connection.Open();
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@workOrderID", WorkOrderID.Value);
+                        command.Parameters.AddWithValue("@workOrderID", OrgWorkOrderID.Value);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                // 取得 PlateID
-                                string plateID = reader["PlateID"].ToString();
-                                // 呼叫載入車輛資料的方法
-                                LoadVehicleData(plateID);
+
+                                Tbx_車輛選擇.Text = reader["LicensePlate"].ToString();
+                                Tbx_里程.Text = reader["Mileage"].ToString();
+                                DTP_日期.Text = reader["Timestamp"].ToString();
+                                Lbl_總金額.Text = "總金額：" + reader["WorkOrderTotalPrice"].ToString();
+
+                                RTB_工作單備註.Text = reader["Remark"].ToString();
+                                string plateID = reader["PlateID"].ToString(); // 取得 PlateID
+                                LoadVehicleData(plateID); // 呼叫載入車輛資料的方法
+                                LoadWorkOrderDetails();
                             }
                         }
                     }
                 }
             }
         }
+        public void LoadWorkOrderDetails()
+        {
+            if (OrgWorkOrderID.HasValue)
+            {
+                string query = @"
+                    SELECT DetailID, PartName, Quantity, UnitPrice, TotalPrice, Remarks
+                    FROM WorkOrderDetails wd
+                    WHERE WorkOrderID = @workOrderID
+                ";
+
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@workOrderID", OrgWorkOrderID.Value);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            DGV_工作單零件.Rows.Clear();
+                            while (reader.Read())
+                            {
+                                int rowIndex = DGV_工作單零件.Rows.Add();
+                                DGV_工作單零件.Rows[rowIndex].Cells["PartName"].Value = reader["PartName"];
+                                DGV_工作單零件.Rows[rowIndex].Cells["UnitPrice"].Value = reader["UnitPrice"];
+                                DGV_工作單零件.Rows[rowIndex].Cells["Quantity"].Value = reader["Quantity"];
+                                DGV_工作單零件.Rows[rowIndex].Cells["TotalPrice"].Value = reader["TotalPrice"];
+                                //DGV_工作單零件.Rows[rowIndex].Cells["Remarks"].Value = reader["Remarks"];
+                            }
+                        }
+                    }
+                }
+                ReLoadPartSelection();
+            }
+        }
+        public void ReLoadPartSelection()
+        {
+            foreach (DataGridViewRow row in DGV_工作單零件.Rows)
+            {
+                var comboBoxCell = (DataGridViewComboBoxCell)row.Cells["PartSelection"];
+                string TypepartName = row.Cells["PartName"].Value?.ToString() ?? "";  // 如果沒填寫，將其設為空字串
+                comboBoxCell.Items.Clear();
+                // 加入資料庫中的零件名稱
+                string SQL = @"SELECT * FROM Parts";
+                bool Add = false;
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(SQL, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string partName = reader["Name"].ToString();
+
+                                comboBoxCell.Items.Add(partName);
+                                // 如果是目標項目，設定為選中
+                                if (partName == TypepartName)
+                                {
+                                    comboBoxCell.Value = partName;
+                                    Add = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (Add == false)
+                {
+                    comboBoxCell.Items.Add(TypepartName);
+                    comboBoxCell.Value = TypepartName;
+                }
+            }
+        }
+
         public void LoadVehicleData(string plateID)
         {
             string query = @"SELECT * FROM Vehicles WHERE Id = @plateID";
@@ -819,12 +819,81 @@ namespace CarCareSystem
                 if (partSelectionCell != null && partSelectionCell.Value != null)
                 {
                     isUpdatingPartName = true; // 設置標誌，防止重入
-                    UpdatingPartName= partSelectionCell.Value.ToString();
-                 //   partNameCell.Value = partSelectionCell.Value.ToString();
-                    
+                    UpdatingPartName = partSelectionCell.Value.ToString();
+                    //   partNameCell.Value = partSelectionCell.Value.ToString();
+
                 }
             }
         }
 
+        private void DTP_日期_ValueChanged(object sender, EventArgs e)
+        {
+
+            DTP_日期.Format = DateTimePickerFormat.Custom;
+            DTP_日期.CustomFormat = string.Format("{0}/MM/dd", DTP_日期.Value.AddYears(-1911).Year.ToString("00"));
+        }
+
+        // 提取共用的邏輯到一個方法
+        private void UpdateRowsData(int startIndex, int rowCount)
+        {
+            try
+            {
+                UpdatingPartName = string.Empty;
+                // 檢查新增的行數量
+                for (int i = startIndex; i < startIndex + rowCount; i++)
+                {
+                    // 找到該行的 ComboBoxCell
+                    var comboBoxCell = (DataGridViewComboBoxCell)DGV_工作單零件.Rows[i].Cells["PartSelection"];
+                    var buttonCell = (DataGridViewButtonCell)DGV_工作單零件.Rows[i].Cells["刪除"];
+                    buttonCell.Value = "刪除";
+
+                    // 清空現有項目
+                    comboBoxCell.Items.Clear();
+
+                    // 加入資料庫中的零件名稱
+                    string SQL = @"SELECT * FROM Parts";
+                    using (var connection = new SQLiteConnection(ConnectionString))
+                    {
+                        connection.Open();
+                        using (var command = new SQLiteCommand(SQL, connection))
+                        {
+                            using (var reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    // 為每行的 ComboBox 填充資料
+                                    comboBoxCell.Items.Add(reader["Name"].ToString());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"載入零件時發生錯誤: {ex.Message}");
+            }
+        }
+
+        // RowsAdded 事件處理程式
+        private void DGV_工作單零件_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            UpdateRowsData(e.RowIndex, e.RowCount);
+        }
+
+        private void DGV_工作單零件_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            // 如果按下的是 Enter 鍵，攔截並防止預設行為
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.IsInputKey = true; // 讓按鍵進入 KeyDown 處理
+            }
+        }
+
+        private void Btn_建立新零件_Click(object sender, EventArgs e)
+        {
+            var 零件登錄 = new 零件登錄();
+            零件登錄.ShowDialog();
+        }
     }
 }

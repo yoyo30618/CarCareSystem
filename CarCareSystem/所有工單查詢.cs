@@ -24,24 +24,36 @@ namespace CarCareSystem
             InitializeComponent();
             DTP_起始時間.Value = new DateTime(DateTime.Now.Year, 1, 1);
             DTP_結束時間.Value = DateTime.Today; // 50年前
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
+            DTP_起始時間.CustomFormat = string.Format("{0}/MM/dd", DTP_起始時間.Value.AddYears(-1911).Year.ToString("00"));
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
+            DTP_結束時間.CustomFormat = string.Format("{0}/MM/dd", DTP_結束時間.Value.AddYears(-1911).Year.ToString("00"));
             CountTotalMoney();
         }
 
         private void DTP_起始時間_ValueChanged(object sender, EventArgs e)
         {
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
+            DTP_起始時間.CustomFormat = string.Format("{0}/MM/dd", DTP_起始時間.Value.AddYears(-1911).Year.ToString("00"));
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
+            DTP_結束時間.CustomFormat = string.Format("{0}/MM/dd", DTP_結束時間.Value.AddYears(-1911).Year.ToString("00"));
             CountTotalMoney();
         }
 
         private void DTP_結束時間_ValueChanged(object sender, EventArgs e)
         {
+            DTP_起始時間.Format = DateTimePickerFormat.Custom;
+            DTP_起始時間.CustomFormat = string.Format("{0}/MM/dd", DTP_起始時間.Value.AddYears(-1911).Year.ToString("00"));
+            DTP_結束時間.Format = DateTimePickerFormat.Custom;
+            DTP_結束時間.CustomFormat = string.Format("{0}/MM/dd", DTP_結束時間.Value.AddYears(-1911).Year.ToString("00"));
             CountTotalMoney();
         }
         private void CountTotalMoney()
         {
             string query = @"
                 SELECT SUM(WorkOrderTotalPrice) AS WorkOrderTotalPrice
-                FROM WorkOrders
-                WHERE Timestamp BETWEEN @StartDate AND @EndDate;
+                FROM WorkOrders 
+                WHERE Timestamp >= @StartDate AND Timestamp < DATE(@EndDate, '+1 day');
             ";
             DateTime startDate = DTP_起始時間.Value;
             DateTime endDate = DTP_結束時間.Value;
@@ -81,7 +93,7 @@ namespace CarCareSystem
 
             // 查詢車主、工單與零件資訊
             string query = @"
-        SELECT v.OwnerName, v.LicensePlate, v.HomePhone, v.MobilePhone, 
+        SELECT v.Id,v.OwnerName, v.LicensePlate, v.HomePhone, v.MobilePhone, 
                w.WorkOrderID, w.Timestamp, w.Mileage, w.WorkOrderTotalPrice, w.Remark,
                wd.PartName, wd.Quantity, wd.UnitPrice, wd.TotalPrice,wd.Remarks
         FROM Vehicles v
@@ -91,6 +103,7 @@ namespace CarCareSystem
            OR UPPER(v.LicensePlate) LIKE @KeyWord
            OR UPPER(v.HomePhone) LIKE @KeyWord
            OR UPPER(v.MobilePhone) LIKE @KeyWord
+           OR UPPER(v.Notes) LIKE @KeyWord
         ORDER BY v.OwnerName ASC , w.Timestamp ASC 
     ";
 
@@ -103,7 +116,7 @@ namespace CarCareSystem
 
                     using (var reader = command.ExecuteReader())
                     {
-                        string currentOwner = null;
+                        int currentOwnerID = -1;
                         int rowIndex = -1;
                         int currentWorkOrderID = -1;
 
@@ -112,17 +125,25 @@ namespace CarCareSystem
                             string ownerName = reader["OwnerName"].ToString();
 
                             // 新的車主資訊時，新增一行
-                            if (ownerName != currentOwner)
+                            if (int.Parse(reader["Id"].ToString()) != currentOwnerID)
                             {
-                                currentOwner = ownerName;
+                                if (currentOwnerID != -1)
+                                {
+                                    rowIndex = DGV_工作單零件.Rows.Add(
+                                        "",
+                                        "",
+                                        "", ""
+                                    );
+                                    DGV_工作單零件.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                                }
+                                currentOwnerID = int.Parse(reader["Id"].ToString());
                                 currentWorkOrderID = -1;
 
                                 rowIndex = DGV_工作單零件.Rows.Add(
                                     "車主名稱：" + ownerName,
                                     "車牌：" + reader["LicensePlate"].ToString(),
                                     "電話：" + reader["HomePhone"].ToString(),
-                                    "手機：" + reader["MobilePhone"].ToString(),
-                                    ""
+                                    "手機：" + reader["MobilePhone"].ToString()
                                 );
 
                                 // 設定車主行的背景色
@@ -138,26 +159,29 @@ namespace CarCareSystem
                                     currentWorkOrderID = workOrderID;
 
                                     rowIndex = DGV_工作單零件.Rows.Add(
-                                        "工單日期：" + reader["Timestamp"].ToString(),
+                                        "工單日期：" + (int.Parse(reader["Timestamp"].ToString().Split('/')[0]) - 1911).ToString() + '/' + (reader["Timestamp"].ToString().Split('/')[1]).ToString() + '/' + (reader["Timestamp"].ToString().Split('/')[2]).ToString().Split(' ')[0],
                                         "當時里程：" + reader["Mileage"].ToString(),
-                                        "總金額：" + reader["WorkOrderTotalPrice"].ToString(),
+                                        "",""
+                                    );
+                                    // 設定工單行的背景色
+                                    DGV_工作單零件.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Orange;
+                                    rowIndex = DGV_工作單零件.Rows.Add(
                                         "備註：" + reader["Remark"].ToString(),
+                                        "總金額：" + reader["WorkOrderTotalPrice"].ToString(),
+                                        "",
                                         ""
                                     );
-
                                     // 設定工單行的背景色
                                     DGV_工作單零件.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
                                 }
-
                                 // 如果該工單有零件資訊，新增一行
                                 if (!reader.IsDBNull(reader.GetOrdinal("PartName")))
                                 {
                                     rowIndex = DGV_工作單零件.Rows.Add(
                                         reader["PartName"].ToString(),
-                                         reader["UnitPrice"].ToString(),
                                          reader["Quantity"].ToString(),
-                                        reader["TotalPrice"].ToString(),
-                                        reader["Remarks"].ToString()
+                                         reader["UnitPrice"].ToString(),
+                                        reader["TotalPrice"].ToString()
                                     );
 
                                     // 設定零件行的背景色
