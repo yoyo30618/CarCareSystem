@@ -197,7 +197,7 @@
             // 
             // PartName
             // 
-            dataGridViewCellStyle1.Font = new Font("標楷體", 12F);
+            dataGridViewCellStyle1.Font = new Font("標楷體", 18F);
             PartName.DefaultCellStyle = dataGridViewCellStyle1;
             PartName.FillWeight = 300F;
             PartName.HeaderText = "零件名稱";
@@ -207,7 +207,7 @@
             // Quantity
             // 
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Font = new Font("標楷體", 12F);
+            dataGridViewCellStyle2.Font = new Font("標楷體", 18F);
             Quantity.DefaultCellStyle = dataGridViewCellStyle2;
             Quantity.HeaderText = "數量";
             Quantity.Name = "Quantity";
@@ -216,7 +216,7 @@
             // UnitPrice
             // 
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Font = new Font("標楷體", 12F);
+            dataGridViewCellStyle3.Font = new Font("標楷體", 18F);
             UnitPrice.DefaultCellStyle = dataGridViewCellStyle3;
             UnitPrice.HeaderText = "零件單價";
             UnitPrice.Name = "UnitPrice";
@@ -225,7 +225,7 @@
             // TotalPrice
             // 
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Font = new Font("標楷體", 12F);
+            dataGridViewCellStyle4.Font = new Font("標楷體", 18F);
             TotalPrice.DefaultCellStyle = dataGridViewCellStyle4;
             TotalPrice.HeaderText = "總價";
             TotalPrice.Name = "TotalPrice";

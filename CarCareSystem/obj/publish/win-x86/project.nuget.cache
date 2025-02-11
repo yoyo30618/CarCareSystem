@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GsLNjXEgvj0=",
+  "dgSpecHash": "kH7ydxCDLYE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bear\\Desktop\\華晟汽車修護廠_愛車帳本\\CarCareSystem\\CarCareSystem\\CarCareSystem.csproj",
+  "projectFilePath": "D:\\雜事\\華晟汽車修護廠_愛車帳本\\CarCareSystem\\CarCareSystem\\CarCareSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bear\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Bear\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

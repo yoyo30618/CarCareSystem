@@ -140,10 +140,10 @@ namespace CarCareSystem
                                 currentWorkOrderID = -1;
 
                                 rowIndex = DGV_工作單零件.Rows.Add(
-                                    "車主名稱：" + ownerName,
-                                    "車牌：" + reader["LicensePlate"].ToString(),
-                                    "電話：" + reader["HomePhone"].ToString(),
-                                    "手機：" + reader["MobilePhone"].ToString()
+                                     ownerName,
+                                    reader["LicensePlate"].ToString(),
+                                    reader["HomePhone"].ToString(),
+                                     reader["MobilePhone"].ToString()
                                 );
 
                                 // 設定車主行的背景色
